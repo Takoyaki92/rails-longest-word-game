@@ -1,0 +1,19 @@
+<head>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+</head>
+
+<h1>THIS IS AN AWESOME GAME AND YOU ARE GOING TO PLAY IT</h1>
+
+<% @letters.each do |letter| %>
+<button type="button" class="btn btn-primary"><%= letter %></button>
+<% end %>
+
+<form method="post" action="/score">
+  <div class="form-group">
+    <label form="word">Enter the longest word that uses these letters! Each letter can only be used once.</label>
+    <input class="form-control" name="word" id="word" placeholder="Word">
+  </div>
+  <button type="submit" class="btn btn-primary">Done!</button>
+  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+  <%= hidden_field_tag :letters, @letters %>
+</form>
